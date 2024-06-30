@@ -1,6 +1,8 @@
 <template>
     <div class="home">
       <h1 class="title">Benvenuti in Appart</h1>
+      <router-link class="link" to="/login">Login</router-link>
+      <router-link class="link" to="/registration">Registrazione</router-link>
       <p class="description">
         Siamo una startup dedicata al tenant scoring. La nostra missione è creare un ponte di fiducia tra inquilini e proprietari.
       </p>
