@@ -1,8 +1,10 @@
 <template>
     <div class="home">
       <h1 class="title">Benvenuti in Appart</h1>
-      <router-link class="link" to="/login">Login</router-link>
-      <router-link class="link" to="/registration">Registrazione</router-link>
+      <div class="login-reg">
+        <router-link class="btn btn-login" to="/login">Login</router-link>
+        <router-link class="btn btn-reg" to="/registration">Registrazione</router-link>
+      </div>
       <p class="description">
         Siamo una startup dedicata al tenant scoring. La nostra missione è creare un ponte di fiducia tra inquilini e proprietari.
       </p>
@@ -21,7 +23,7 @@
   
   <style scoped>
   .home {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 2rem;
     font-family: Arial, sans-serif;
@@ -48,6 +50,39 @@
     /* Personalizza gli stili del logo */
     }
   
+.login-reg {
+  display: flex;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.btn {
+  padding: 10px 60px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.btn-login {
+  background-color: #4a148c;
+}
+
+.btn-login:hover {
+  background-color: #6a1b9a;
+}
+
+.btn-reg {
+  background-color: #db4437;
+}
+
+.btn-reg:hover {
+  background-color: #e57373;
+}
+
   /* Add additional styling as needed */
   </style>
   

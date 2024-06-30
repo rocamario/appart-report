@@ -25,7 +25,7 @@
           <strong>Mario Roca</strong> - CIO
         </li>
         <li>
-          <strong>Michele Miranda</strong> 
+          <strong>Michele Lorenzo Miranda</strong> 
         </li>
         <!-- Add other team members here -->
       </ul>
@@ -34,24 +34,32 @@
   
   <style scoped>
   .about {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 2rem;
+    font-family: Arial, sans-serif;
   }
   
   h2 {
     font-size: 24px;
     margin-bottom: 1rem;
+    color: #333;
   }
   
   h3 {
     font-size: 20px;
     margin-top: 2rem;
+    color: #333;
+  }
+
+  p {
+    color: #666;
   }
   
   ul {
     list-style: none;
     padding: 0;
+    color: #666;
   }
   
   li {

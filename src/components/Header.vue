@@ -9,10 +9,10 @@
   <style scoped>
   .header {
     background-color: #f8f8f8;
-    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
   }
   
   img {
