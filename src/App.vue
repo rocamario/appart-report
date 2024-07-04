@@ -1,22 +1,9 @@
 <script setup>
+import Navbar from '@/components/Navbar.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div>
-    <Header />
-    <router-view></router-view>
-    <Footer />
-  </div>
+  <Navbar />
+  <RouterView />
 </template>
-
-<script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-
-export default {
-  components: {
-    Header,
-    Footer,
-  },
-};
-</script>

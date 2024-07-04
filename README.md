@@ -16,9 +16,13 @@ Clone this repo on your local machine (via terminal or using an IDE), move to th
 ```sh
 npm install
 ```
-Also install the router:
+### Run JSON Server
+
+The server will run on http://localhost:8000
+This is a mock backend
+
 ```sh
-npm i vue-router@next
+npm run server
 ```
 
 ### Compile and Hot-Reload for Development

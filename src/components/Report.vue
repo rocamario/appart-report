@@ -1,1 +1,0 @@
-<!-- Content for the home page of the tenant user -->
