@@ -13,7 +13,7 @@ const toggleFullDescription = () => {
 };
 
 const truncatedDescription = computed(() => {
-  let description = props.dossier.description;
+  let description = props.dossier.bio;
   if (!showFullDescription.value) {
     description = description.substring(0, 90) + '...';
   }
@@ -25,8 +25,10 @@ const truncatedDescription = computed(() => {
   <div class="bg-white rounded-xl shadow-md relative">
     <div class="p-4">
       <div class="mb-6">
-        <div class="text-gray-600 my-2">{{ dossier.type }}</div>
-        <h3 class="text-xl font-bold">{{ dossier.title }}</h3>
+        <h3 class="text-xl font-bold">{{ dossier.personalInfo.firstName }} {{ dossier.personalInfo.lastName }}</h3>
+        <div class="text-gray-600 my-2">{{ dossier.personalInfo.age }} anni</div>
+        <div class="text-gray-600 my-2">{{ dossier.searchDetails.leaseTerm }}</div>
+        
       </div>
 
       <div class="mb-5">
@@ -41,14 +43,14 @@ const truncatedDescription = computed(() => {
         </button>
       </div>
 
-      <h3 class="text-violet-500 mb-2">{{ dossier.salary }} / Year</h3>
+      <h3 class="text-violet-500 mb-2">Budget mensile: {{ dossier.financialInfo.monthlyBudget }}</h3>
 
       <div class="border border-gray-100 mb-5"></div>
 
       <div class="flex flex-col lg:flex-row justify-between mb-4">
         <div class="text-orange-700 mb-3">
           <i class="pi pi-map-marker text-orange-700"></i>
-          {{ dossier.location }}
+          {{ dossier.searchDetails.desiredCity }}
         </div>
         <RouterLink
           :to="'/dossiers/' + dossier.id"

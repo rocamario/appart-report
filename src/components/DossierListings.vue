@@ -20,7 +20,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:8000/dossiers');
+    const response = await axios.get('https://mocked-be-appart.vercel.app/dossiers');
     state.dossiers = response.data;
   } catch (error) {
     console.error('Error fetching dossiers', error);

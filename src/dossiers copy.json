@@ -1,0 +1,94 @@
+{
+  "dossiers": [
+    {
+      "id": "1",
+      "personalInfo": {
+        "firstName": "Mario",
+        "lastName": "Rossi",
+        "age": 30,
+        "contactEmail": "mario.rossi@example.com",
+        "contactPhone": "333-333-3333"
+      },
+      "bio": "Sto cercando un quartiere tranquillo, ben servito dai mezzi pubblici. Vorrei vivere in un'area silenziosa ma ben collegata con autobus, tram o metropolitana per raggiungere facilmente il centro città e altri servizi essenziali.",
+      "searchDetails": {
+        "desiredCity": "Milano",
+        "desiredNeighborhoods": [
+          "Brera",
+          "Navigli",
+          "Isola"
+        ],
+        "moveInDate": "01/09/2024",
+        "leaseTerm": "1 anno"
+      },
+      "financialInfo": {
+        "monthlyBudget": "1200€",
+        "income": "3500€",
+        "employmentStatus": "Lavoro full-time"
+      },
+      "additionalInfo": {
+        "pets": "No",
+        "smoking": "No"
+      }
+    },
+    {
+      "id": "2",
+      "personalInfo": {
+        "firstName": "Anna",
+        "lastName": "Bianchi",
+        "age": 23,
+        "contactEmail": "anna.bianchi@example.com",
+        "contactPhone": "222-222-2222"
+      },
+      "bio": "Sono una studentessa di medicina veterinaria. Preferisco un appartamento che accetti Tom, il mio animale domestici.",
+      "searchDetails": {
+        "desiredCity": "Roma",
+        "desiredNeighborhoods": [
+          "Trastevere",
+          "Monti",
+          "San Giovanni"
+        ],
+        "moveInDate": "15/08/2024",
+        "leaseTerm": "meno di 1 anno"
+      },
+      "financialInfo": {
+        "monthlyBudget": "700€",
+        "income": "1500€",
+        "employmentStatus": "Studente"
+      },
+      "additionalInfo": {
+        "pets": "Yes",
+        "smoking": "No"
+      }
+    },
+    {
+      "id": "3",
+      "personalInfo": {
+        "firstName": "Luca",
+        "lastName": "Verdi",
+        "age": 35,
+        "contactEmail": "luca.verdi@example.com",
+        "contactPhone": "111-111-1111"
+      },
+      "bio": "Cerco un appartamento spazioso con uno spazio dedicato per l'ufficio a casa.",
+      "searchDetails": {
+        "desiredCity": "Firenze",
+        "desiredNeighborhoods": [
+          "Centro Storico",
+          "San Frediano",
+          "Campo di Marte"
+        ],
+        "moveInDate": "01/10/2024",
+        "leaseTerm": "tra 1 e 3 anni"
+      },
+      "financialInfo": {
+        "monthlyBudget": "1700€",
+        "income": "4000€",
+        "employmentStatus": "Imprenditore"
+      },
+      "additionalInfo": {
+        "pets": "No",
+        "smoking": "Yes"
+      }
+    }
+  ]
+}

@@ -10,16 +10,28 @@ const route = useRoute();
 const dossierId = route.params.id;
 
 const form = reactive({
-  type: 'Full-Time',
-  title: '',
-  description: '',
-  salary: '',
-  location: '',
-  company: {
-    name: '',
-    description: '',
+  personalInfo: {
+    firstName: '',
+    lastName: '',
+    age: '',
     contactEmail: '',
     contactPhone: '',
+  },
+  bio: '',
+  searchDetails: {
+    desiredCity: '',
+    desiredNeighborhoods: [],
+    moveInDate: '',
+    leaseTerm: '',
+  },
+  financialInfo: {
+    monthlyBudget: '',
+    income: '',
+    employmentStatus: '',
+  },
+  additionalInfo: {
+    pets: '',
+    smoking: '',
   },
 });
 
@@ -32,43 +44,61 @@ const toast = useToast();
 
 const handleSubmit = async () => {
   const updateddossier = {
-    title: form.title,
-    type: form.type,
-    location: form.location,
-    description: form.description,
-    salary: form.salary,
-    company: {
-      name: form.company.name,
-      description: form.company.description,
-      contactEmail: form.company.contactEmail,
-      contactPhone: form.company.contactPhone,
+    personalInfo: {
+      firstName: form.personalInfo.firstName,
+      lastName: form.personalInfo.lastName,
+      age: form.personalInfo.age,
+      contactEmail: form.personalInfo.contactEmail,
+      contactPhone: form.personalInfo.contactPhone,
+    },
+    bio: form.bio,
+    searchDetails: {
+      desiredCity: form.searchDetails.desiredCity,
+      desiredNeighborhoods: [...form.searchDetails.desiredNeighborhoods],
+      moveInDate: form.searchDetails.moveInDate,
+      leaseTerm: form.searchDetails.leaseTerm,
+    },
+    financialInfo: {
+      monthlyBudget: form.financialInfo.monthlyBudget,
+      income: form.financialInfo.income,
+      employmentStatus: form.financialInfo.employmentStatus,
+    },
+    additionalInfo: {
+      pets: form.additionalInfo.pets,
+      smoking: form.additionalInfo.smoking,
     },
   };
 
   try {
-    const response = await axios.put(`http://localhost:8000/dossiers/${dossierId}`, updateddossier);
-    toast.success('dossier Updated Successfully');
-    router.push(`http://localhost:8000/dossiers/${response.data.id}`);
+    const response = await axios.put(`https://mocked-be-appart.vercel.app/dossiers/${dossierId}`, updateddossier);
+    toast.success('Dossier aggiornato');
+    router.push(`/dossiers/${response.data.id}`);
   } catch (error) {
     console.error('Error fetching dossier', error);
-    toast.error('dossier Was Not Added');
+    toast.error('Errore! Il dossier non è stato aggiornato.');
   }
 };
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:8000/dossiers/${dossierId}`);
+    const response = await axios.get(`https://mocked-be-appart.vercel.app/dossiers/${dossierId}`);
     state.dossier = response.data;
     // Populate inputs
-    form.type = state.dossier.type;
-    form.title = state.dossier.title;
-    form.description = state.dossier.description;
-    form.salary = state.dossier.salary;
-    form.location = state.dossier.location;
-    form.company.name = state.dossier.company.name;
-    form.company.description = state.dossier.company.description;
-    form.company.contactEmail = state.dossier.company.contactEmail;
-    form.company.contactPhone = state.dossier.company.contactPhone;
+    form.personalInfo.firstName = state.dossier.personalInfo.firstName;
+    form.personalInfo.lastName = state.dossier.personalInfo.lastName;
+    form.personalInfo.age = state.dossier.personalInfo.age;
+    form.personalInfo.contactEmail = state.dossier.personalInfo.contactEmail;
+    form.personalInfo.contactPhone = state.dossier.personalInfo.contactPhone;
+    form.bio = state.dossier.bio;
+    form.searchDetails.desiredCity = state.dossier.searchDetails.desiredCity;
+    // form.searchDetails.desiredNeighborhoods = state.dossier.searchDetails.desiredNeighborhoods;
+    // form.searchDetails.moveInDate = state.dossier.searchDetails.moveInDate;
+    form.searchDetails.leaseTerm = state.dossier.searchDetails.leaseTerm;
+    form.financialInfo.monthlyBudget = state.dossier.financialInfo.monthlyBudget;
+    form.financialInfo.income = state.dossier.financialInfo.income;
+    form.financialInfo.employmentStatus = state.dossier.financialInfo.employmentStatus;
+    form.additionalInfo.pets = state.dossier.additionalInfo.pets;
+    form.additionalInfo.smoking = state.dossier.additionalInfo.smoking;
   } catch (error) {
     console.error('Error fetching dossier', error);
   } finally {
@@ -84,162 +114,240 @@ onMounted(async () => {
         class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
       >
         <form @submit.prevent="handleSubmit">
-          <h2 class="text-3xl text-center font-semibold mb-6">Edit dossier</h2>
+          <h2 class="text-3xl text-center font-semibold mb-6">Aggiorna il dossier</h2>
+
+          <!-- Personal Information-->
+          <h3 class="text-2xl mb-5">Informazioni personali</h3>
 
           <div class="mb-4">
-            <label for="type" class="block text-gray-700 font-bold mb-2"
-              >dossier Type</label
+            <label class="block text-gray-700 font-bold mb-2"
+              >Nome</label
             >
-            <select
-              v-model="form.type"
-              id="type"
-              name="type"
-              class="border rounded w-full py-2 px-3"
+            <input
+              type="text"
+              v-model="form.personalInfo.firstName"
+              id="firstName"
+              name="firstName"
+              class="border rounded w-full py-2 px-3 mb-2"
+              placeholder="Mario"
               required
-            >
-              <option value="Full-Time">Full-Time</option>
-              <option value="Part-Time">Part-Time</option>
-              <option value="Remote">Remote</option>
-              <option value="Internship">Internship</option>
-            </select>
+            />
           </div>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2"
-              >dossier Listing Name</label
+              >Cognome</label
             >
             <input
               type="text"
-              v-model="form.title"
-              id="name"
-              name="name"
+              v-model="form.personalInfo.lastName"
+              id="lastName"
+              name="lastName"
               class="border rounded w-full py-2 px-3 mb-2"
-              placeholder="eg. Beautiful Apartment In Miami"
+              placeholder="Rossi"
               required
             />
           </div>
+
           <div class="mb-4">
-            <label for="description" class="block text-gray-700 font-bold mb-2"
-              >Description</label
+            <label class="block text-gray-700 font-bold mb-2"
+              >Età</label
+            >
+            <input
+              type="text"
+              v-model="form.personalInfo.age"
+              id="age"
+              name="age"
+              class="border rounded w-full py-2 px-3 mb-2"
+              placeholder="35"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2"
+              >Email</label
+            >
+            <input
+              type="text"
+              v-model="form.personalInfo.contactEmail"
+              id="contactEmail"
+              name="contactEmail"
+              class="border rounded w-full py-2 px-3 mb-2"
+              placeholder="mario.rossi@example.com"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2"
+              >Telefono</label
+            >
+            <input
+              type="text"
+              v-model="form.personalInfo.contactPhone"
+              id="contactPhone"
+              name="contactPhone"
+              class="border rounded w-full py-2 px-3 mb-2"
+              placeholder="222-222-222"
+              required
+            />
+          </div>
+
+          <!-- Bio -->
+
+          <div class="mb-4">
+            <label for="bio" class="block text-gray-700 font-bold mb-2"
+              >Biografia</label
             >
             <textarea
-              id="description"
-              v-model="form.description"
-              name="description"
+              id="bio"
+              v-model="form.bio"
+              name="bio"
               class="border rounded w-full py-2 px-3"
               rows="4"
-              placeholder="Add any dossier duties, expectations, requirements, etc"
+              placeholder="Parla di te, delle caratteristiche dell'alloggio che cerchi, etc"
             ></textarea>
+          </div>
+
+          <!--Search Details-->
+          <h3 class="text-2xl mb-5">La tua ricerca</h3>
+
+          <div class="mb-4">
+            <label for="desiredCity" class="block text-gray-700 font-bold mb-2"
+              >Città</label
+            >
+            <select
+              v-model="form.searchDetails.desiredCity"
+              id="desiredCity"
+              name="desiredCity"
+              class="border rounded w-full py-2 px-3"
+              required
+            >
+              <option value="Milano">Milano</option>
+              <option value="Roma">Roma</option>
+              <option value="Firenze">Firenze</option>
+              <option value="Napoli">Napoli</option>
+            </select>
+          </div>
+
+          <!-- TODO: Neighborhoods preference input list-->
+
+          <!-- TODO: Move-in date input-->
+
+          <div class="mb-4">
+            <label for="leaseTerm" class="block text-gray-700 font-bold mb-2"
+              >Periodo di soggiorno</label
+            >
+            <select
+              v-model="form.searchDetails.leaseTerm"
+              id="leaseTerm"
+              name="leaseTerm"
+              class="border rounded w-full py-2 px-3"
+              required
+            >
+              <option value="Meno di 1 anno">Meno di 1 anno</option>
+              <option value="1 anno">1 anno</option>
+              <option value="Tra 1 e 3 anni">Tra 1 e 3 anni</option>
+              <option value="Più di 3 anni">Più di 3 anni</option>
+            </select>
+          </div>
+          
+          <!-- Financial Information-->
+
+          <h3 class="text-2xl mb-5">Informazioni sul budget</h3>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2"
+              >Budget mensile</label
+            >
+            <input
+              type="text"
+              v-model="form.financialInfo.monthlyBudget"
+              id="monthlyBudget"
+              name="monthlyBudget"
+              class="border rounded w-full py-2 px-3 mb-2"
+              placeholder="1500€"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2"
+              >Stipendio/Risorse mensili</label
+            >
+            <input
+              type="text"
+              v-model="form.financialInfo.income"
+              id="income"
+              name="income"
+              class="border rounded w-full py-2 px-3 mb-2"
+              placeholder="3500€"
+              required
+            />
           </div>
 
           <div class="mb-4">
             <label for="type" class="block text-gray-700 font-bold mb-2"
-              >Salary</label
+              >Occupazione</label
             >
             <select
-              id="salary"
-              v-model="form.salary"
-              name="salary"
+              id="employmentStatus"
+              v-model="form.financialInfo.employmentStatus"
+              name="employmentStatus"
               class="border rounded w-full py-2 px-3"
               required
             >
-              <option value="Under $50K">under $50K</option>
-              <option value="$50K - $60K">$50 - $60K</option>
-              <option value="$60K - $70K">$60 - $70K</option>
-              <option value="$70K - $80K">$70 - $80K</option>
-              <option value="$80K - $90K">$80 - $90K</option>
-              <option value="$90K - $100K">$90 - $100K</option>
-              <option value="$100K - $125K">$100 - $125K</option>
-              <option value="$125K - $150K">$125 - $150K</option>
-              <option value="$150K - $175K">$150 - $175K</option>
-              <option value="$175K - $200K">$175 - $200K</option>
-              <option value="Over $200K">Over $200K</option>
+              <option value="Studente">Studente</option>
+              <option value="Lavoro full-time">Lavoro full-time</option>
+              <option value="Lavoro part-time">Lavoro part-time</option>
+              <option value="Imprenditore">Imprenditore</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </div>
+
+          <!-- Additional Info -->
+
+          <h3 class="text-2xl mb-5">Altre informazioni</h3>
+
+          <div class="mb-4">
+            <label for="pets" class="block text-gray-700 font-bold mb-2"
+              >Animali domestici</label
+            >
+            <select
+              id="pets"
+              v-model="form.additionalInfo.pets"
+              name="pets"
+              class="border rounded w-full py-2 px-3"
+              required
+            >
+              <option value="Si">Si</option>
+              <option value="No">No</option>
             </select>
           </div>
 
           <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2"> Location </label>
-            <input
-              type="text"
-              v-model="form.location"
-              id="location"
-              name="location"
-              class="border rounded w-full py-2 px-3 mb-2"
-              placeholder="Company Location"
+            <label for="smoking" class="block text-gray-700 font-bold mb-2"
+              >Fumatore</label
+            >
+            <select
+              id="smoking"
+              v-model="form.additionalInfo.smoking"
+              name="smoking"
+              class="border rounded w-full py-2 px-3"
               required
-            />
-          </div>
-
-          <h3 class="text-2xl mb-5">Company Info</h3>
-
-          <div class="mb-4">
-            <label for="company" class="block text-gray-700 font-bold mb-2"
-              >Company Name</label
             >
-            <input
-              type="text"
-              v-model="form.company.name"
-              id="company"
-              name="company"
-              class="border rounded w-full py-2 px-3"
-              placeholder="Company Name"
-            />
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+            </select>
           </div>
-
-          <div class="mb-4">
-            <label
-              for="company_description"
-              class="block text-gray-700 font-bold mb-2"
-              >Company Description</label
-            >
-            <textarea
-              id="company_description"
-              v-model="form.company.description"
-              name="company_description"
-              class="border rounded w-full py-2 px-3"
-              rows="4"
-              placeholder="What does your company do?"
-            ></textarea>
-          </div>
-
-          <div class="mb-4">
-            <label
-              for="contact_email"
-              class="block text-gray-700 font-bold mb-2"
-              >Contact Email</label
-            >
-            <input
-              type="email"
-              v-model="form.company.contactEmail"
-              id="contact_email"
-              name="contact_email"
-              class="border rounded w-full py-2 px-3"
-              placeholder="Email address for applicants"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="contact_phone"
-              class="block text-gray-700 font-bold mb-2"
-              >Contact Phone</label
-            >
-            <input
-              type="tel"
-              v-model="form.company.contactPhone"
-              id="contact_phone"
-              name="contact_phone"
-              class="border rounded w-full py-2 px-3"
-              placeholder="Optional phone for applicants"
-            />
-          </div>
-
+          
           <div>
             <button
               class="bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Update dossier
+              Aggiorna il dossier
             </button>
           </div>
         </form>

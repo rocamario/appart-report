@@ -21,19 +21,19 @@ const deletedossier = async () => {
   try {
     const confirm = window.confirm('Sei sicuro di voler eliminare il tuo dossier?');
     if (confirm) {
-      await axios.delete(`http://localhost:8000/dossiers/${dossierId}`);
+      await axios.delete(`https://mocked-be-appart.vercel.app/dossiers/${dossierId}`);
       toast.success('Dossier eliminato');
       router.push('/dossiers');
     }
   } catch (error) {
     console.error('Error deleting dossier', error);
-    toast.error('Dossier non eliminato, riprova');
+    toast.error('Dossier non eliminato, riprova!');
   }
 };
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:8000/dossiers/${dossierId}`);
+    const response = await axios.get(`https://mocked-be-appart.vercel.app/dossiers/${dossierId}`);
     state.dossier = response.data;
   } catch (error) {
     console.error('Error fetching dossier', error);
@@ -52,71 +52,87 @@ onMounted(async () => {
           <div
             class="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
           >
-            <div class="text-gray-500 mb-4">{{ state.dossier.type }}</div>
-            <h1 class="text-3xl font-bold mb-4">{{ state.dossier.title }}</h1>
+            <h1 class="text-3xl font-bold mb-4">{{ state.dossier.personalInfo.firstName }} {{ state.dossier.personalInfo.lastName }}</h1>
+            <div class="text-gray-500 mb-4">{{ state.dossier.personalInfo.age }} anni</div>
+            <p class="my-2">
+              {{ state.dossier.financialInfo.employmentStatus }}
+            </p>
             <div
               class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
             >
               <i class="pi pi-map-marker text-xl text-orange-700 mr-2"></i>
-              <p class="text-orange-700">{{ state.dossier.location }}</p>
+              <p class="text-orange-700">{{ state.dossier.searchDetails.desiredCity }}</p>
             </div>
+            <hr class="my-4" />
+
+            <h3 class="text-xl">Email:</h3>
+
+            <p class="my-2 bg-violet-100 p-2 font-bold">
+              {{ state.dossier.personalInfo.contactEmail }}
+            </p>
+
+            <h3 class="text-xl">Telefono:</h3>
+
+            <p class="my-2 bg-violet-100 p-2 font-bold">
+              {{ state.dossier.personalInfo.contactPhone }}
+            </p>
           </div>
 
           <div class="bg-white p-6 rounded-lg shadow-md mt-6">
             <h3 class="text-violet-800 text-lg font-bold mb-6">
-              Nel dettaglio
+              Biografia
             </h3>
 
             <p class="mb-4">
-              {{ state.dossier.description }}
+              {{ state.dossier.bio }}
             </p>
 
-            <h3 class="text-violet-800 text-lg font-bold mb-2">Salary</h3>
+            <h3 class="text-violet-800 text-lg font-bold mb-2">La mia ricerca</h3>
 
-            <p class="mb-4">{{ state.dossier.salary }} / Year</p>
+            <p class="mb-4">Città: {{ state.dossier.searchDetails.desiredCity }}</p>
+            <p class="mb-4">Quartiere: 
+              <span v-if="state.dossier.searchDetails.desiredNeighborhoods.length > 0">
+                {{ state.dossier.searchDetails.desiredNeighborhoods.join(', ') }}
+              </span>
+              <span v-else>Nessun quartiere specificato</span>
+            </p>
+            <p class="mb-4">Data ingresso : {{ state.dossier.searchDetails.moveInDate }}</p>
+            <p class="mb-4">Periodo del soggiorno: {{ state.dossier.searchDetails.leaseTerm }}</p>
+
+            <h3 class="text-violet-800 text-lg font-bold mb-2">Altre informazioni</h3>
+
+            <p class="mb-4">Animali: {{ state.dossier.additionalInfo.pets }}</p>
+            <p class="mb-4">Fumatore: {{ state.dossier.additionalInfo.smoking }}</p>
           </div>
         </main>
 
         <!-- Sidebar -->
         <aside>
-          <!-- Company Info -->
+          <!-- Financial Information -->
           <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold mb-6">Company Info</h3>
+            <h3 class="text-xl font-bold mb-6">Informazioni sul budget</h3>
 
-            <h2 class="text-2xl">{{ state.dossier.company.name }}</h2>
+            <h2 class="text-2xl">Budget mensile: {{ state.dossier.financialInfo.monthlyBudget }}</h2>
 
             <p class="my-2">
-              {{ state.dossier.company.description }}
+              Stipendio mensile (o altre risorse): {{ state.dossier.financialInfo.income }}
             </p>
 
-            <hr class="my-4" />
-
-            <h3 class="text-xl">Contact Email:</h3>
-
-            <p class="my-2 bg-violet-100 p-2 font-bold">
-              {{ state.dossier.company.contactEmail }}
-            </p>
-
-            <h3 class="text-xl">Contact Phone:</h3>
-
-            <p class="my-2 bg-violet-100 p-2 font-bold">
-              {{ state.dossier.company.contactPhone }}
-            </p>
           </div>
 
           <!-- Manage -->
           <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-            <h3 class="text-xl font-bold mb-6">Manage dossier</h3>
+            <h3 class="text-xl font-bold mb-6">Gestisci dossier</h3>
             <RouterLink
-              :to="`http://localhost:8000/dossiers/edit/${state.dossier.id}`"
+              :to="`/dossiers/edit/${state.dossier.id}`"
               class="bg-violet-500 hover:bg-violet-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-              >Edit dossier</RouterLink
+              >Aggiorna dossier</RouterLink
             >
             <button
               @click="deletedossier"
               class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
             >
-              Delete dossier
+              Elimina dossier
             </button>
           </div>
         </aside>

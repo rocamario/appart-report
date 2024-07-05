@@ -16,10 +16,16 @@ Clone this repo on your local machine (via terminal or using an IDE), move to th
 ```sh
 npm install
 ```
+## Mock the DB
+You can choose if to run the mocked DB locally or connect to one over the internet.
+The one over the internet is at:
+
+https://mocked-be-appart.vercel.app/dossiers
+
+If you want to run it on your local machine instead:
 ### Run JSON Server
 
 The server will run on http://localhost:8000
-This is a mock backend
 
 ```sh
 npm run server
