@@ -22,10 +22,12 @@ The one over the internet is at:
 
 https://mocked-be-appart.vercel.app/dossiers
 
-If you want to run it on your local machine instead:
-### Run JSON Server
+And it has only read permissions.
 
-The server will run on http://localhost:8000
+If you want to run it on your local machine, to try the full CRUD operations, do the following instead:
+### Run JSON Server locally
+
+To run the server on http://localhost:8000 run the following command:
 
 ```sh
 npm run server
