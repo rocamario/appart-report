@@ -33,7 +33,7 @@ To run the server on http://localhost:8000 run the following command:
 npm run server
 ```
 
-### Compile and Hot-Reload for Development
+## Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
