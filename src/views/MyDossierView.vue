@@ -120,6 +120,7 @@ onMounted(async () => {
             <!-- TODO: check if budget is higher than apartment rent cost-->
             <img class="h-20 w-auto" :src="certification" alt="Budget certification" />
             <h2 class="text-2xl">Approvato da Appart</h2>
+            <h2 class="text-2xl">Budget: {{ state.dossier.financialInfo.budget }}</h2>
 
             <hr class="my-4" />
             
