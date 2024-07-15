@@ -2,21 +2,40 @@
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import BackButton from '@/components/BackButton.vue';
 import { reactive, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, RouterLink, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
 import certification from '@/assets/certification.png';
+import { userRole, setUserRole } from '@/userState.js'
+
+setUserRole('tenant');
+console.log(userRole.value);
 
 const route = useRoute();
 const router = useRouter();
 const toast = useToast();
 
-const dossierId = route.params.id;
+// TODO: get the right dossierId
+const dossierId = 1;
 
 const state = reactive({
   dossier: {},
   isLoading: true,
 });
+
+const deletedossier = async () => {
+  try {
+    const confirm = window.confirm('Sei sicuro di voler eliminare il tuo dossier?');
+    if (confirm) {
+      await axios.delete(`https://mocked-be-appart.vercel.app/dossiers/${dossierId}`);
+      toast.success('Dossier eliminato');
+      router.push('/dossiers');
+    }
+  } catch (error) {
+    console.error('Error deleting dossier', error);
+    toast.error('Dossier non eliminato, riprova!');
+  }
+};
 
 onMounted(async () => {
   try {
@@ -31,7 +50,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <BackButton />
   <section v-if="!state.isLoading" class="bg-violet-50">
     <div class="container m-auto py-10 px-6">
       <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
@@ -109,6 +127,22 @@ onMounted(async () => {
             <h3 class="text-xl font-bold mb-6">Risultato del test psicometrico</h3>
             <h2 class="text-2xl">{{ state.dossier.additionalInfo.testResult }}</h2>
 
+          </div>
+
+          <!-- Manage -->
+          <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+            <h3 class="text-xl font-bold mb-6">Gestisci dossier</h3>
+            <RouterLink
+              :to="`/dossiers/edit/${state.dossier.id}`"
+              class="bg-violet-500 hover:bg-violet-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+              >Aggiorna dossier</RouterLink
+            >
+            <button
+              @click="deletedossier"
+              class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+            >
+              Elimina dossier
+            </button>
           </div>
         </aside>
       </div>

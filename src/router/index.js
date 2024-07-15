@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue';
 import DossiersView from '@/views/DossiersView.vue';
 import NotFoundView from '@/views/NotFoundView.vue';
 import DossierView from '@/views/DossierView.vue';
+import MyDossierView from '@/views/MyDossierView.vue';
 import AddDossierView from '@/views/AddDossierView.vue';
 import EditDossierView from '@/views/EditDossierView.vue';
 
@@ -23,6 +24,11 @@ const router = createRouter({
       path: '/dossiers/:id',
       name: 'dossier',
       component: DossierView,
+    },
+    {
+      path: '/myDossier',
+      name: 'myDdossier',
+      component: MyDossierView,
     },
     {
       path: '/dossiers/add',

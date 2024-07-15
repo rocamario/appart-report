@@ -7,5 +7,7 @@ import DossierListings from '@/components/DossierListings.vue';
 <template>
   <Hero />
   <HomeCards />
+  <!-- This is for the home page of the landlors:
   <DossierListings :limit="3" :showButton="true" />
+  -->
 </template>

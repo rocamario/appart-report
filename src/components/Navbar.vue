@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router';
 import logo from '@/assets/logo.png';
+import { userRole } from '@/userState.js'
 
 const isActiveLink = (routePath) => {
   const route = useRoute();
@@ -37,32 +38,65 @@ const isActiveLink = (routePath) => {
                 ]"
                 >Home</RouterLink
               >
-              <RouterLink
-                to="/dossiers"
-                :class="[
-                  isActiveLink('/dossiers')
-                    ? 'bg-violet-900'
-                    : 'hover:bg-gray-900 hover:text-white',
-                  'text-white',
-                  'px-3',
-                  'py-2',
-                  'rounded-md',
-                ]"
-                >Dossiers</RouterLink
-              >
-              <RouterLink
-                to="/dossiers/add"
-                :class="[
-                  isActiveLink('/dossiers/add')
-                    ? 'bg-violet-900'
-                    : 'hover:bg-gray-900 hover:text-white',
-                  'text-white',
-                  'px-3',
-                  'py-2',
-                  'rounded-md',
-                ]"
-                >Aggiungi il tuo dossier</RouterLink
-              >
+              <!-- Tenant Links -->
+              <template v-if="userRole === 'tenant'">
+                <RouterLink
+                  to="/myDossier"
+                  :class="[
+                    isActiveLink('/myDossier')
+                      ? 'bg-violet-900'
+                      : 'hover:bg-gray-900 hover:text-white',
+                    'text-white',
+                    'px-3',
+                    'py-2',
+                    'rounded-md',
+                  ]"
+                  >Il mio dossier</RouterLink
+                >
+                <RouterLink
+                  to="/applications"
+                  :class="[
+                    isActiveLink('/applications')
+                      ? 'bg-violet-900'
+                      : 'hover:bg-gray-900 hover:text-white',
+                    'text-white',
+                    'px-3',
+                    'py-2',
+                    'rounded-md',
+                  ]"
+                  >Le mie applications</RouterLink
+                >
+              </template>
+
+              <!-- Landlord Links -->
+              <template v-if="userRole === 'landlord'">
+                <RouterLink
+                  to="/dossiers"
+                  :class="[
+                    isActiveLink('/dossiers')
+                      ? 'bg-violet-900'
+                      : 'hover:bg-gray-900 hover:text-white',
+                    'text-white',
+                    'px-3',
+                    'py-2',
+                    'rounded-md',
+                  ]"
+                  >Dossiers</RouterLink
+                >
+                <RouterLink
+                  to="/apartments"
+                  :class="[
+                    isActiveLink('/apartments')
+                      ? 'bg-violet-900'
+                      : 'hover:bg-gray-900 hover:text-white',
+                    'text-white',
+                    'px-3',
+                    'py-2',
+                    'rounded-md',
+                  ]"
+                  >I miei appartamenti</RouterLink
+                >
+              </template>
             </div>
           </div>
         </div>

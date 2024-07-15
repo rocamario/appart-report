@@ -25,6 +25,7 @@ const form = reactive({
     employmentStatus: '',
   },
   additionalInfo: {
+    testResult: '',
     pets: '',
     smoking: '',
   },

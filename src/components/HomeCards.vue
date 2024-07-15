@@ -25,10 +25,10 @@ import Card from '@/components/Card.vue';
             Pubblica il tuo dossier e lasciati selezionare da un proprietario
           </p>
           <RouterLink
-            to="/dossiers/add"
+            to="/myDossier"
             class="inline-block bg-violet-500 text-white rounded-lg px-4 py-2 hover:bg-violet-600"
           >
-            Aggiungi il tuo dossier
+            Vai al tuo dossier
           </RouterLink>
         </Card>
       </div>

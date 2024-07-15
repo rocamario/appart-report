@@ -26,6 +26,7 @@
         "employmentStatus": "Lavoro full-time"
       },
       "additionalInfo": {
+        "testResult": "95/100",
         "pets": "No",
         "smoking": "No"
       }
@@ -56,6 +57,7 @@
         "employmentStatus": "Studente"
       },
       "additionalInfo": {
+        "testResult": "89/100",
         "pets": "Yes",
         "smoking": "No"
       }
@@ -86,6 +88,7 @@
         "employmentStatus": "Imprenditore"
       },
       "additionalInfo": {
+        "testResult": "84/100",
         "pets": "No",
         "smoking": "Yes"
       }
