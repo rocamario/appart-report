@@ -5,6 +5,7 @@ import { reactive, onMounted } from 'vue';
 import { useRoute, RouterLink, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
+import certification from '@/assets/certification.png';
 
 const route = useRoute();
 const router = useRouter();
@@ -112,11 +113,9 @@ onMounted(async () => {
           <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-bold mb-6">Informazioni sul budget</h3>
 
-            <h2 class="text-2xl">Budget mensile: {{ state.dossier.financialInfo.monthlyBudget }}</h2>
-
-            <p class="my-2">
-              Stipendio mensile (o altre risorse): {{ state.dossier.financialInfo.income }}
-            </p>
+            <!-- TODO: check if budget is higher than apartment rent cost-->
+            <img class="h-20 w-auto" :src="certification" alt="Budget certification" />
+            <h2 class="text-2xl">Approvato da Appart</h2>
 
           </div>
 

@@ -21,8 +21,8 @@
         "leaseTerm": "1 anno"
       },
       "financialInfo": {
-        "monthlyBudget": "1200€",
-        "income": "3500€",
+        "budget": "1200€",
+        "maxBudget": "3500€",
         "employmentStatus": "Lavoro full-time"
       },
       "additionalInfo": {
@@ -51,8 +51,8 @@
         "leaseTerm": "meno di 1 anno"
       },
       "financialInfo": {
-        "monthlyBudget": "700€",
-        "income": "1500€",
+        "budget": "700€",
+        "maxBudget": "1500€",
         "employmentStatus": "Studente"
       },
       "additionalInfo": {
@@ -81,8 +81,8 @@
         "leaseTerm": "tra 1 e 3 anni"
       },
       "financialInfo": {
-        "monthlyBudget": "1700€",
-        "income": "4000€",
+        "budget": "1700€",
+        "maxBudget": "4000€",
         "employmentStatus": "Imprenditore"
       },
       "additionalInfo": {

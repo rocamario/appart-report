@@ -42,8 +42,8 @@ const truncatedDescription = computed(() => {
           {{ showFullDescription ? 'Less' : 'More' }}
         </button>
       </div>
-
-      <h3 class="text-violet-500 mb-2">Budget mensile: {{ dossier.financialInfo.monthlyBudget }}</h3>
+      <!-- TODO: check budget is enough-->
+      <h3 class="text-violet-500 mb-2">Budget: Approvato da Appart</h3>
 
       <div class="border border-gray-100 mb-5"></div>
 

@@ -25,8 +25,8 @@ const form = reactive({
     leaseTerm: '',
   },
   financialInfo: {
-    monthlyBudget: '',
-    income: '',
+    budget: '',
+    maxBudget: '',
     employmentStatus: '',
   },
   additionalInfo: {
@@ -59,8 +59,8 @@ const handleSubmit = async () => {
       leaseTerm: form.searchDetails.leaseTerm,
     },
     financialInfo: {
-      monthlyBudget: form.financialInfo.monthlyBudget,
-      income: form.financialInfo.income,
+      budget: form.financialInfo.budget,
+      maxBudget: form.financialInfo.maxBudget,
       employmentStatus: form.financialInfo.employmentStatus,
     },
     additionalInfo: {
@@ -94,8 +94,8 @@ onMounted(async () => {
     // form.searchDetails.desiredNeighborhoods = state.dossier.searchDetails.desiredNeighborhoods;
     // form.searchDetails.moveInDate = state.dossier.searchDetails.moveInDate;
     form.searchDetails.leaseTerm = state.dossier.searchDetails.leaseTerm;
-    form.financialInfo.monthlyBudget = state.dossier.financialInfo.monthlyBudget;
-    form.financialInfo.income = state.dossier.financialInfo.income;
+    form.financialInfo.budget = state.dossier.financialInfo.budget;
+    form.financialInfo.maxBudget = state.dossier.financialInfo.maxBudget;
     form.financialInfo.employmentStatus = state.dossier.financialInfo.employmentStatus;
     form.additionalInfo.pets = state.dossier.additionalInfo.pets;
     form.additionalInfo.smoking = state.dossier.additionalInfo.smoking;
@@ -263,9 +263,9 @@ onMounted(async () => {
             >
             <input
               type="text"
-              v-model="form.financialInfo.monthlyBudget"
-              id="monthlyBudget"
-              name="monthlyBudget"
+              v-model="form.financialInfo.budget"
+              id="budget"
+              name="budget"
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="1500€"
               required
@@ -278,9 +278,9 @@ onMounted(async () => {
             >
             <input
               type="text"
-              v-model="form.financialInfo.income"
-              id="income"
-              name="income"
+              v-model="form.financialInfo.maxBudget"
+              id="maxBudget"
+              name="maxBudget"
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="3500€"
               required

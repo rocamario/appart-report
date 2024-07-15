@@ -20,8 +20,8 @@ const form = reactive({
     leaseTerm: '',
   },
   financialInfo: {
-    monthlyBudget: '',
-    income: '',
+    budget: '',
+    maxBudget: '',
     employmentStatus: '',
   },
   additionalInfo: {
@@ -50,8 +50,8 @@ const handleSubmit = async () => {
     leaseTerm: form.searchDetails.leaseTerm,
   },
   financialInfo: {
-    monthlyBudget: form.financialInfo.monthlyBudget,
-    income: form.financialInfo.income,
+    budget: form.financialInfo.budget,
+    maxBudget: form.financialInfo.maxBudget,
     employmentStatus: form.financialInfo.employmentStatus,
   },
   additionalInfo: {
@@ -228,9 +228,9 @@ const handleSubmit = async () => {
             >
             <input
               type="text"
-              v-model="form.financialInfo.monthlyBudget"
-              id="monthlyBudget"
-              name="monthlyBudget"
+              v-model="form.financialInfo.budget"
+              id="budget"
+              name="budget"
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="1500€"
               required
@@ -243,9 +243,9 @@ const handleSubmit = async () => {
             >
             <input
               type="text"
-              v-model="form.financialInfo.income"
-              id="income"
-              name="income"
+              v-model="form.financialInfo.maxBudget"
+              id="maxBudget"
+              name="maxBudget"
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="3500€"
               required

@@ -29,6 +29,8 @@ If you want to run it on your local machine, to try the full CRUD operations, do
 
 To run the server on http://localhost:8000 run the following command:
 
+Remember to remplace https://mocked-be-appart.vercel.app/dossiers with http://localhost:8000/dossiers and viceversa, for dev and prd mocking in the entire codebase. Use the replace all feature of VScode and exclude the change from this Readme file.
+
 ```sh
 npm run server
 ```
