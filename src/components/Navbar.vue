@@ -97,6 +97,19 @@ const isActiveLink = (routePath) => {
                   >I miei appartamenti</RouterLink
                 >
               </template>
+              <RouterLink
+                  to="/login-register"
+                  :class="[
+                    isActiveLink('/login-register')
+                      ? 'bg-violet-900'
+                      : 'hover:bg-gray-900 hover:text-white',
+                    'text-white',
+                    'px-3',
+                    'py-2',
+                    'rounded-md',
+                  ]"
+                  >Accedi</RouterLink
+                >
             </div>
           </div>
         </div>
