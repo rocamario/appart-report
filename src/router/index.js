@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import LoginRegisterView from '@/views/LoginRegisterView.vue';
 import DossiersView from '@/views/DossiersView.vue';
+import ApartmentsView from '@/views/ApartmentsView.vue';
 import NotFoundView from '@/views/NotFoundView.vue';
 import DossierView from '@/views/DossierView.vue';
 import MyDossierView from '@/views/MyDossierView.vue';
@@ -25,6 +26,11 @@ const router = createRouter({
       path: '/dossiers',
       name: 'dossiers',
       component: DossiersView,
+    },
+    {
+      path: '/apartments',
+      name: 'apartments',
+      component: ApartmentsView,
     },
     {
       path: '/dossiers/:id',

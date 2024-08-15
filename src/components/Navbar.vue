@@ -54,9 +54,9 @@ const isActiveLink = (routePath) => {
                   >Il mio dossier</RouterLink
                 >
                 <RouterLink
-                  to="/applications"
+                  to="/apartments"
                   :class="[
-                    isActiveLink('/applications')
+                    isActiveLink('/apartments')
                       ? 'bg-violet-900'
                       : 'hover:bg-gray-900 hover:text-white',
                     'text-white',
