@@ -1,8 +1,10 @@
 <script setup>
-import router from '@/router';
 import { reactive } from 'vue';
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const form = reactive({
   personalInfo: {

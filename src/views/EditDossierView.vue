@@ -1,11 +1,11 @@
 <script setup>
 import router from '@/router';
 import { reactive, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
 
-const route = useRoute();
+const route = useRouter();
 
 const dossierId = route.params.id;
 

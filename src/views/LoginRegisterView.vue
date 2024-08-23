@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 // State variables
 const isLogin = ref(true);
@@ -35,6 +38,10 @@ const handleSubmit = async () => {
       // Handle successful login (e.g., redirect, store token)
       console.log('Login successful:', response.data);
     } else {
+
+      router.push('/dossiers/add');
+
+
       // Handle registration
       if (password.value !== confirmPassword.value) {
         errorMessage.value = 'Passwords do not match';
@@ -46,6 +53,7 @@ const handleSubmit = async () => {
       });
       // Handle successful registration (e.g., redirect, show success message)
       console.log('Registration successful:', response.data);
+      // router.push('/dossiers/add');
     }
   } catch (error) {
     // Handle error

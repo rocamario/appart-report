@@ -2,7 +2,7 @@
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import BackButton from '@/components/BackButton.vue';
 import { reactive, onMounted } from 'vue';
-import { useRoute, RouterLink, useRouter } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
 import certification from '@/assets/certification.png';
@@ -11,7 +11,6 @@ import { userRole, setUserRole } from '@/userState.js'
 setUserRole('tenant');
 console.log(userRole.value);
 
-const route = useRoute();
 const router = useRouter();
 const toast = useToast();
 
