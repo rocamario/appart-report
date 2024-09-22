@@ -4,6 +4,11 @@ import { useToast } from 'vue-toastification';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
+// TODO:
+
+//  IF THE USE ARRIVED ON THIS PAGE MEANS THAT HE IS OF TYPE TENANT. 
+// PUSH THIS INFO IN THE BACKEND AND USE IT TO RENDER THE FRONTEND.
+
 const router = useRouter();
 
 const form = reactive({

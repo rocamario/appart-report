@@ -8,6 +8,9 @@ const router = useRouter();
 // State variables
 const isLogin = ref(true);
 const email = ref('');
+const name = ref('');
+const surname = ref('');
+const birthday = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const errorMessage = ref('');
@@ -22,6 +25,9 @@ const toggleForm = () => {
 const clearForm = () => {
   email.value = '';
   password.value = '';
+  name.value = '';
+  surname = '';
+  birthday = '';
   confirmPassword.value = '';
   errorMessage.value = '';
 };
@@ -39,7 +45,7 @@ const handleSubmit = async () => {
       console.log('Login successful:', response.data);
     } else {
 
-      router.push('/dossiers/add');
+      router.push('/welcome'); // This is here to show the page meanwhile the BE is not ready. to remove
 
 
       // Handle registration
@@ -47,13 +53,16 @@ const handleSubmit = async () => {
         errorMessage.value = 'Passwords do not match';
         return;
       }
-      const response = await axios.post('/api/register', {
+      const response = await axios.post('/api/signup', {
         email: email.value,
         password: password.value,
+        name: name.value,
+        surname: surname.value,
+        birthday: birthday.value,
       });
       // Handle successful registration (e.g., redirect, show success message)
       console.log('Registration successful:', response.data);
-      // router.push('/dossiers/add');
+      // router.push('/welcome');   To uncomment when backend is ready
     }
   } catch (error) {
     // Handle error
@@ -102,17 +111,58 @@ const handleSubmit = async () => {
             />
           </div>
           <div v-if="!isLogin" class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
-              Conferma Password
-            </label>
-            <input
-              v-model="confirmPassword"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="confirm-password"
-              type="password"
-              placeholder="******************"
-              required
-            />
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+                Conferma Password
+              </label>
+              <input
+                v-model="confirmPassword"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="confirm-password"
+                type="password"
+                placeholder="******************"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                Nome
+              </label>
+              <input
+                v-model="name"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                type="text"
+                placeholder="Nome"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="surname">
+                Cognome
+              </label>
+              <input
+                v-model="surname"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="surname"
+                type="text"
+                placeholder="Cognome"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="birthday">
+                Data di nascita
+              </label>
+              <input
+                v-model="birthday"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="birthday"
+                type="date"
+                placeholder="Data di Nascita"
+                required
+              />
+            </div>
           </div>
           <div v-if="errorMessage" class="mb-4 text-red-500 text-sm">
             {{ errorMessage }}
