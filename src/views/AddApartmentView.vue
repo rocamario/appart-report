@@ -39,7 +39,7 @@ const handleSubmit = async () => {
       },
     });
     toast.success('Annuncio aggiunto con successo');
-    router.push(`/apartments/${response.data.id}`);  // I removed the ID so I need to change this
+    router.push(`/apartments/${response.data.id}`);  // I removed the ID so I need to change this 
   } catch (error) {
     console.error('Errore durante l\'aggiunta dell\'annuncio', error);
     toast.error('Errore! Annuncio non aggiunto.');
