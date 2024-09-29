@@ -12,6 +12,7 @@ const form = reactive({
   title: '',
   description: '',
   city: '',
+  price: '',
 });
 
 // Image upload handling
@@ -28,6 +29,7 @@ const handleSubmit = async () => {
   formData.append('title', form.title);
   formData.append('description', form.description);
   formData.append('city', form.city);
+  formData.append('price', form.price);
   if (imageFile.value) {
     formData.append('image', imageFile.value);
   }
@@ -95,6 +97,22 @@ const handleSubmit = async () => {
                 required
               />
             </div>
+
+            <!-- Price -->
+            <div class="mb-4">
+              <label for="price" class="block text-gray-700 font-bold mb-2">Prezzo</label>
+              <input
+                v-model.number="form.price"
+                type="number" 
+                id="price"
+                name="price"
+                class="border rounded w-full py-2 px-3 mb-2"
+                placeholder="Inserisci il prezzo"
+                required
+                min="0"
+              />
+            </div>
+
   
             <!-- Image Upload -->
             <div class="mb-4">

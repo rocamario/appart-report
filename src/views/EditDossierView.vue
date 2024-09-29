@@ -1,12 +1,11 @@
 <script setup>
 import router from '@/router';
 import { reactive, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
 
-const route = useRouter();
-
+const route = useRoute();
 const dossierId = route.params.id;
 
 const form = reactive({
@@ -19,14 +18,11 @@ const form = reactive({
   },
   bio: '',
   searchDetails: {
-    desiredCity: '',
-    desiredNeighborhoods: [],
     moveInDate: '',
     leaseTerm: '',
   },
   financialInfo: {
     budget: '',
-    maxBudget: '',
     employmentStatus: '',
   },
   additionalInfo: {
@@ -53,14 +49,10 @@ const handleSubmit = async () => {
     },
     bio: form.bio,
     searchDetails: {
-      desiredCity: form.searchDetails.desiredCity,
-      desiredNeighborhoods: [...form.searchDetails.desiredNeighborhoods],
       moveInDate: form.searchDetails.moveInDate,
       leaseTerm: form.searchDetails.leaseTerm,
     },
     financialInfo: {
-      budget: form.financialInfo.budget,
-      maxBudget: form.financialInfo.maxBudget,
       employmentStatus: form.financialInfo.employmentStatus,
     },
     additionalInfo: {
@@ -90,12 +82,8 @@ onMounted(async () => {
     form.personalInfo.contactEmail = state.dossier.personalInfo.contactEmail;
     form.personalInfo.contactPhone = state.dossier.personalInfo.contactPhone;
     form.bio = state.dossier.bio;
-    form.searchDetails.desiredCity = state.dossier.searchDetails.desiredCity;
-    // form.searchDetails.desiredNeighborhoods = state.dossier.searchDetails.desiredNeighborhoods;
     // form.searchDetails.moveInDate = state.dossier.searchDetails.moveInDate;
     form.searchDetails.leaseTerm = state.dossier.searchDetails.leaseTerm;
-    form.financialInfo.budget = state.dossier.financialInfo.budget;
-    form.financialInfo.maxBudget = state.dossier.financialInfo.maxBudget;
     form.financialInfo.employmentStatus = state.dossier.financialInfo.employmentStatus;
     form.additionalInfo.pets = state.dossier.additionalInfo.pets;
     form.additionalInfo.smoking = state.dossier.additionalInfo.smoking;
@@ -213,26 +201,6 @@ onMounted(async () => {
           <!--Search Details-->
           <h3 class="text-2xl mb-5">La tua ricerca</h3>
 
-          <div class="mb-4">
-            <label for="desiredCity" class="block text-gray-700 font-bold mb-2"
-              >Città</label
-            >
-            <select
-              v-model="form.searchDetails.desiredCity"
-              id="desiredCity"
-              name="desiredCity"
-              class="border rounded w-full py-2 px-3"
-              required
-            >
-              <option value="Milano">Milano</option>
-              <option value="Roma">Roma</option>
-              <option value="Firenze">Firenze</option>
-              <option value="Napoli">Napoli</option>
-            </select>
-          </div>
-
-          <!-- TODO: Neighborhoods preference input list-->
-
           <!-- TODO: Move-in date input-->
 
           <div class="mb-4">
@@ -252,40 +220,10 @@ onMounted(async () => {
               <option value="Più di 3 anni">Più di 3 anni</option>
             </select>
           </div>
-          
-          <!-- Financial Information-->
 
-          <h3 class="text-2xl mb-5">Informazioni sul budget</h3>
+          <!-- Additional Info -->
 
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2"
-              >Budget mensile</label
-            >
-            <input
-              type="text"
-              v-model="form.financialInfo.budget"
-              id="budget"
-              name="budget"
-              class="border rounded w-full py-2 px-3 mb-2"
-              placeholder="1500€"
-              required
-            />
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2"
-              >Stipendio/Risorse mensili</label
-            >
-            <input
-              type="text"
-              v-model="form.financialInfo.maxBudget"
-              id="maxBudget"
-              name="maxBudget"
-              class="border rounded w-full py-2 px-3 mb-2"
-              placeholder="3500€"
-              required
-            />
-          </div>
+          <h3 class="text-2xl mb-5">Altre informazioni</h3>
 
           <div class="mb-4">
             <label for="type" class="block text-gray-700 font-bold mb-2"
@@ -305,10 +243,6 @@ onMounted(async () => {
               <option value="Altro">Altro</option>
             </select>
           </div>
-
-          <!-- Additional Info -->
-
-          <h3 class="text-2xl mb-5">Altre informazioni</h3>
 
           <div class="mb-4">
             <label for="pets" class="block text-gray-700 font-bold mb-2"

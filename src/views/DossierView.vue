@@ -1,6 +1,6 @@
 <script setup>
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
-import BackButton from '@/components/BackButton.vue';
+import BackButton from '@/components/BackButtonDossier.vue';
 import { reactive, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
@@ -44,12 +44,6 @@ onMounted(async () => {
             <p class="my-2">
               {{ state.dossier.financialInfo.employmentStatus }}
             </p>
-            <div
-              class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
-            >
-              <i class="pi pi-map-marker text-xl text-orange-700 mr-2"></i>
-              <p class="text-orange-700">{{ state.dossier.searchDetails.desiredCity }}</p>
-            </div>
             <hr class="my-4" />
 
             <h3 class="text-xl">Email:</h3>
@@ -74,15 +68,8 @@ onMounted(async () => {
               {{ state.dossier.bio }}
             </p>
 
-            <h3 class="text-violet-800 text-lg font-bold mb-2">La mia ricerca</h3>
+            <h3 class="text-violet-800 text-lg font-bold mb-2">A proposito della ricerca</h3>
 
-            <p class="mb-4">Città: {{ state.dossier.searchDetails.desiredCity }}</p>
-            <p class="mb-4">Quartiere: 
-              <span v-if="state.dossier.searchDetails.desiredNeighborhoods.length > 0">
-                {{ state.dossier.searchDetails.desiredNeighborhoods.join(', ') }}
-              </span>
-              <span v-else>Nessun quartiere specificato</span>
-            </p>
             <p class="mb-4">Data ingresso : {{ state.dossier.searchDetails.moveInDate }}</p>
             <p class="mb-4">Periodo del soggiorno: {{ state.dossier.searchDetails.leaseTerm }}</p>
 

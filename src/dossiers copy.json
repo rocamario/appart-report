@@ -11,18 +11,11 @@
       },
       "bio": "Sto cercando un quartiere tranquillo, ben servito dai mezzi pubblici. Vorrei vivere in un'area silenziosa ma ben collegata con autobus, tram o metropolitana per raggiungere facilmente il centro città e altri servizi essenziali.",
       "searchDetails": {
-        "desiredCity": "Milano",
-        "desiredNeighborhoods": [
-          "Brera",
-          "Navigli",
-          "Isola"
-        ],
         "moveInDate": "01/09/2024",
         "leaseTerm": "1 anno"
       },
       "financialInfo": {
         "budget": "1200€",
-        "maxBudget": "3500€",
         "employmentStatus": "Lavoro full-time"
       },
       "additionalInfo": {
@@ -42,18 +35,11 @@
       },
       "bio": "Sono una studentessa di medicina veterinaria. Preferisco un appartamento che accetti Tom, il mio animale domestici.",
       "searchDetails": {
-        "desiredCity": "Roma",
-        "desiredNeighborhoods": [
-          "Trastevere",
-          "Monti",
-          "San Giovanni"
-        ],
         "moveInDate": "15/08/2024",
         "leaseTerm": "meno di 1 anno"
       },
       "financialInfo": {
         "budget": "700€",
-        "maxBudget": "1500€",
         "employmentStatus": "Studente"
       },
       "additionalInfo": {
@@ -73,18 +59,11 @@
       },
       "bio": "Cerco un appartamento spazioso con uno spazio dedicato per l'ufficio a casa.",
       "searchDetails": {
-        "desiredCity": "Firenze",
-        "desiredNeighborhoods": [
-          "Centro Storico",
-          "San Frediano",
-          "Campo di Marte"
-        ],
         "moveInDate": "01/10/2024",
         "leaseTerm": "tra 1 e 3 anni"
       },
       "financialInfo": {
         "budget": "1700€",
-        "maxBudget": "4000€",
         "employmentStatus": "Imprenditore"
       },
       "additionalInfo": {

@@ -48,10 +48,6 @@ const truncatedDescription = computed(() => {
       <div class="border border-gray-100 mb-5"></div>
 
       <div class="flex flex-col lg:flex-row justify-between mb-4">
-        <div class="text-orange-700 mb-3">
-          <i class="pi pi-map-marker text-orange-700"></i>
-          {{ dossier.searchDetails.desiredCity }}
-        </div>
         <RouterLink
           :to="'/dossiers/' + dossier.id"
           class="h-[36px] bg-violet-500 hover:bg-violet-600 text-white px-4 py-2 rounded-lg text-center text-sm"

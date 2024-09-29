@@ -6,29 +6,17 @@ import Card from '@/components/Card.vue';
 <template>
   <section class="py-4">
     <div class="container-xl lg:container m-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
-        <Card>
-          <h2 class="text-2xl font-bold">Per i proprietari</h2>
+      <div class="flex justify-center p-4">
+        <Card bg="bg-violet-100" class="text-center">
+          <h2 class="text-2xl font-bold">Area Riservata</h2>
           <p class="mt-2 mb-4">
-            Sfoglia i dossiers e trova l'inquilino perfetto
+            Se hai già un account personale, o se desideri crearne uno, accedi o registrati qui.
           </p>
           <RouterLink
-            to="/dossiers"
-            class="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
-          >
-            Sfoglia i dossiers
-          </RouterLink>
-        </Card>
-        <Card bg="bg-violet-100">
-          <h2 class="text-2xl font-bold">Per chi cerca casa</h2>
-          <p class="mt-2 mb-4">
-            Pubblica il tuo dossier e lasciati selezionare da un proprietario
-          </p>
-          <RouterLink
-            to="/myDossier"
+            to="/login-register"
             class="inline-block bg-violet-500 text-white rounded-lg px-4 py-2 hover:bg-violet-600"
           >
-            Vai al tuo dossier
+          Accedi o Registrati
           </RouterLink>
         </Card>
       </div>

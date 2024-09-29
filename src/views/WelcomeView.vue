@@ -8,7 +8,7 @@ import Card from '@/components/Card.vue';
       <div class="container-xl lg:container m-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
           <Card>
-            <h2 class="text-2xl font-bold">Per i proprietari</h2>
+            <h2 class="text-2xl font-bold">Per chi affitta</h2>
             <p class="mt-2 mb-4">
               Crea un appartamento e trova l'inquilino perfetto
             </p>

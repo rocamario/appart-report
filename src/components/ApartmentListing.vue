@@ -42,14 +42,29 @@ const truncatedDescription = computed(() => {
         </button>
       </div>
 
+      <div class="mb-6">
+        <h3 class="text-xl font-bold">Prezzo: {{ apartment.price }}€</h3>
+      </div>
+
       <div class="border border-gray-100 mb-5"></div>
 
-      <div class="flex flex-col lg:flex-row justify-between mb-4">
-        <div class="text-orange-700 mb-3">
+      <div class="flex justify-between mb-4">
+        <div class="text-orange-700 mb-3 flex items-center">
           <i class="pi pi-map-marker text-orange-700"></i>
-          {{ apartment.city }}
+          <span class="ml-1">{{ apartment.city }}</span>
         </div>
+
+        <RouterLink
+          to="/dossiers"
+          class="inline-block bg-violet-500 text-white text-sm rounded px-6 py-2"
+        >
+          Sfoglia i dossiers
+        </RouterLink>
       </div>
+
+
+
+
     </div>
   </div>
 </template>

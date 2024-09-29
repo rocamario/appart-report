@@ -71,19 +71,6 @@ const isActiveLink = (routePath) => {
               <!-- Landlord Links -->
               <template v-if="userRole === 'landlord'">
                 <RouterLink
-                  to="/dossiers"
-                  :class="[
-                    isActiveLink('/dossiers')
-                      ? 'bg-violet-900'
-                      : 'hover:bg-gray-900 hover:text-white',
-                    'text-white',
-                    'px-3',
-                    'py-2',
-                    'rounded-md',
-                  ]"
-                  >Dossiers</RouterLink
-                >
-                <RouterLink
                   to="/apartments"
                   :class="[
                     isActiveLink('/apartments')
@@ -94,7 +81,7 @@ const isActiveLink = (routePath) => {
                     'py-2',
                     'rounded-md',
                   ]"
-                  >I miei appartamenti</RouterLink
+                  >Dashboard</RouterLink
                 >
               </template>
               <RouterLink
