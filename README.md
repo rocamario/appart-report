@@ -1,5 +1,10 @@
 # appart-tenant-scoring
-Front-end for Appart, a tenant scoring solution.
+Web version for Appart, a tenant scoring solution.
+
+### Gallery
+
+![Apartment](public/monolocale.png)
+![Dossier](public/dossier.png)
 
 ### Additional resources
 Quick start guide with Vue.js: https://vuejs.org/guide/quick-start.html  
